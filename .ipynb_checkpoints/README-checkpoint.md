@@ -546,6 +546,48 @@ Figura 7: Fonte: O autor, 03/05/2024
 
 Figura 8: Fonte: O autor, 03/05/2024
 
-```python
 
-```
+# CANCELAMENTO
+
+
+![](ArquiteturaC4Model/ArquiteturaC4ModelComponentes/C4-Model-ComponentesCancelaOperaCAOdrawio.png)
+
+
+Figura 9: Fonte: O autor, 03/05/2024
+
+
+# ORQUESTRADOR 
+
+
+![](ArquiteturaC4Model/ArquiteturaC4ModelComponentes/C4-Model-ComponenteOrquestradordrawio.png)
+
+
+Figura 10: Fonte: O autor, 03/05/2024
+
+
+# CARRINHO DE COMPRAS
+
+
+![](ArquiteturaC4Model/ArquiteturaC4ModelComponentes/C4-Model-ComponentesdoCarrinhodecomprasdrawio.png)
+
+
+Figura 11: Fonte: O autor, 03/05/2024
+
+
+# REPLICAÇÃO DE DADOS - ALTA E BAIXA PLATAFORMA
+
+
+![](ArquiteturaC4Model/ArquiteturaC4ModelComponentes/C4-Model-ComponentesReplicaçãoeSincronizaçãodeDadosdrawio.png)
+
+
+Figura 12: Fonte: O autor, 03/05/2024
+
+
+# REFERÊNCIAS
+
+
+* Apostila Design de Arquiteturas Aula 1 FIAP
+* Apostila Design de Arquiteturas Aula 2 FIAP
+* Apostila Design de Arquiteturas Aula 3 FIAP
+* Apostila Design de Arquiteturas Aula 4 FIAP
+* Diagramas de referência em C4 Model
