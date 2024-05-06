@@ -237,9 +237,254 @@ Esses riscos destacam a importância de uma gestão de riscos proativa e de uma 
 
 # Desenhe uma arquitetura
 
-```python
 
-```
+![](ArquiteturaFreeStylle/Arquitetura_Case_E_COmmerce.png)
+
+
+Figura 1: Fonte: O autor, 22/04/2024
+
+
+# Faça uma descrição de cada um dos componentes que você desenhou
+
+
+A arquitetura de e-commerce descrita é uma estrutura complexa e multifacetada, projetada para suportar um alto volume de tráfego e transações, garantindo alta disponibilidade e resiliência. Abaixo está uma descrição detalhada dos componentes e eventos identificados, seguida pela jornada do cliente e dos colaboradores e fornecedores.
+
+
+# Componentes e Eventos:
+
+
+Amazon CloudFront (CDN): Distribui conteúdo globalmente com baixa latência, melhorando a experiência do usuário e reduzindo o tempo de carregamento das páginas.
+
+AWS Route 53: Serviço de DNS escalável que roteia os usuários para a aplicação, oferecendo gerenciamento de tráfego, monitoramento de saúde e proteção contra falhas.
+
+AWS Shield: Fornece proteção contra ataques DDoS, garantindo a disponibilidade e a segurança da aplicação.
+
+AWS WAF: Firewall de aplicativos web que protege a aplicação contra explorações comuns da web e bots maliciosos.
+
+AWS IAM (Identity and Access Management): Gerencia o acesso seguro aos recursos da AWS, permitindo controle fino sobre quem pode fazer o quê na conta AWS.
+
+VPN: Rede privada virtual que permite aos colaboradores e fornecedores acessar a rede interna da empresa de forma segura.
+
+AWS API Gateway: Serviço que facilita a criação, publicação, manutenção e monitoramento de APIs em grande escala.
+
+AWS Lambda Autorizer: Função Lambda usada para controlar o acesso a APIs, verificando tokens de segurança, como JWT ou OAuth.
+
+AWS Secrets Manager: Gerencia o acesso a segredos necessários para acessar aplicações, serviços e recursos da IT.
+AWS CloudWatch: Monitora e observa a aplicação e a infraestrutura da AWS em tempo real, fornecendo dados e alertas operacionais.
+
+AWS X-Ray: Oferece insights sobre o comportamento da aplicação e o desempenho de microserviços, facilitando a análise e a depuração.
+
+**Microserviços:**
+
+* Catálogo de Produtos: Gerencia informações de produtos e disponibilidade.
+* Carrinho de Compras: Mantém o estado do carrinho de compras dos usuários.
+* Orquestrador: Coordena os processos de negócios, como pedidos e entregas.
+
+Arquitetura Saga: Padrão de design que gerencia transações entre microserviços em sistemas distribuídos.
+Banco de Dados DynamoDB: Banco de dados NoSQL rápido e flexível para aplicações em escala de Internet.
+Zonas de Disponibilidade A e B: Duas zonas que permitem a replicação de dados e a failover automática para garantir alta disponibilidade.
+
+Mainframe IBM z/OS: Sistema legado que ainda executa funções críticas de negócios, integrado via Kafka Connector.
+ERP, CRM, SAP: Sistemas de gestão empresarial que gerenciam recursos da empresa, relacionamento com clientes e processos de negócios.
+
+CDC (Change Data Capture): Técnica para capturar alterações em dados de produtos e sincronizar com o banco de dados.
+
+
+**Jornada do Cliente:**
+
+
+O cliente acessa a plataforma de e-commerce via CDN, onde é direcionado pelo Route 53. Ao navegar pelo catálogo de produtos e adicionar itens ao carrinho de compras, cada ação é processada pelos microserviços correspondentes. O pagamento é gerenciado pelo API Gateway com segurança reforçada pelo Lambda Autorizer e WAF. Após a confirmação do pedido, o orquestrador coordena a reserva de estoque, logística e entrega, com a arquitetura Saga garantindo a consistência das transações.
+
+
+**Jornada dos Colaboradores e Fornecedores:**
+
+
+Colaboradores e fornecedores acessam a rede interna via VPN, interagindo com o sistema de ERP, CRM e SAP para gerenciamento de recursos, clientes e processos de negócios. Eles utilizam o IAM para autenticação e o Secrets Manager para acessar segredos. O CDC é utilizado para atualizar dados de produtos entre o mainframe e o DynamoDB, garantindo que as informações estejam sempre sincronizadas e atualizadas.
+
+Esta arquitetura é projetada para ser resiliente, segura e escalável, suportando um alto volume de vendas e acessos por segundo, enquanto mantém a integridade e a eficiência dos processos de negócios.
+
+
+# Descreva requisitos que você considera importante e por quê?
+
+
+Para arquitetura de e-commerce robusta e eficiente como a descrita, consideramos os seguintes requisitos importantes:
+
+
+* Escalabilidade: A capacidade de escalar recursos conforme necessário é crucial para lidar com picos de tráfego e crescimento do negócio. Isso garante que a plataforma possa suportar um número crescente de usuários e transações sem degradação de desempenho;
+* Segurança: Proteger dados de clientes e transações é fundamental. Implementar camadas de segurança como AWS WAF e AWS Shield é essencial para defender contra ataques cibernéticos e vazamentos de dados;
+* Alta Disponibilidade: Utilizar múltiplas Zonas de Disponibilidade e serviços como o AWS Route 53 para garantir que a aplicação permaneça operacional mesmo em caso de falhas de componentes individuais;
+* Monitoramento e Observabilidade: Ferramentas como AWS CloudWatch e AWS X-Ray são vitais para monitorar a saúde da aplicação e infraestrutura, permitindo uma rápida resposta a incidentes e otimização contínua;
+* Gerenciamento de Identidade e Acesso: O AWS IAM e o AWS Secrets Manager ajudam a controlar o acesso a recursos e segredos, respectivamente, o que é importante para manter a integridade e a confidencialidade das operações;
+* Integração e Orquestração: A capacidade de integrar sistemas legados (como o Mainframe IBM z/OS) e orquestrar processos de negócios complexos é crucial para uma experiência de usuário coesa e para a eficiência operacional.
+
+
+Esses requisitos são fundamentais para manter a plataforma não apenas funcionando de maneira eficaz, mas também para assegurar a confiança dos usuários e a sustentabilidade do negócio a longo prazo.
+
+
+# Sobre o que o diagrama ajuda você a raciocinar/pensar?
+
+
+O diagrama de arquitetura ajuda a raciocinar e pensar sobre vários aspectos importantes do sistema, tais como:
+
+O diagrama pode ilustrar como os dados fluem entre os componentes, como os microserviços interagem com o banco de dados e como as solicitações dos usuários são processadas.
+
+Ajuda a identificar as dependências entre os serviços e como eles se relacionam uns com os outros, o que é crucial para entender o impacto de mudanças ou falhas em uma parte do sistema.
+
+Permite analisar as camadas de segurança implementadas, como o AWS WAF e o AWS Shield, e como elas protegem contra ameaças específicas.
+
+Facilita a compreensão de como a arquitetura suporta o crescimento e o que pode ser necessário para manter ou melhorar o desempenho à medida que o tráfego aumenta.
+
+O diagrama mostra como a arquitetura é projetada para lidar com falhas, usando Zonas de Disponibilidade e outros mecanismos de failover.
+
+Permite destacar os sistemas de monitoramento em uso, como o AWS CloudWatch, e como eles contribuem para a manutenção proativa do sistema.
+
+Ilustra como sistemas mais antigos, como o Mainframe IBM z/OS, são integrados ao ecossistema moderno, garantindo que processos críticos continuem a funcionar sem problemas.
+
+Ajuda a refletir sobre a jornada do cliente e a experiência do usuário final, desde o acesso ao site até a conclusão de uma compra.
+
+Fornece insights sobre como os colaboradores e fornecedores interagem com o sistema, incluindo acesso seguro e gerenciamento de recursos.
+
+Resumindo, o diagrama serve como uma ferramenta visual para entender a complexidade e a integração dos componentes da arquitetura, permitindo uma análise holística e estratégica do sistema de e-commerce.
+
+
+# Quais são os padrões essenciais no diagrama?
+
+
+Os padrões essenciais descritos no diagrama de arquitetura de e-commerce são:
+
+A utilização de microserviços para modularizar a aplicação, permitindo desenvolvimento, implantação e escalabilidade independentes.
+
+Arquitetura Saga, padrão de design que gerencia transações entre microserviços em sistemas distribuídos, assegurando a consistência dos dados em processos de negócios complexos.
+
+Change Data Capture (CDC), técnica para capturar alterações em dados de produtos e sincronizar com o banco de dados, essencial para a integridade dos dados.
+
+Content Delivery Network (CDN), distribuição de conteúdo globalmente com baixa latência, crucial para a experiência do usuário e desempenho do site.
+
+Autenticação e Autorização, uso de AWS IAM e AWS Lambda Autorizer para gerenciar o acesso seguro aos recursos e APIs, respectivamente.
+
+Proteção contra Ataques DDoS e Exploitações Web, implementação de AWS Shield e AWS WAF para defender a aplicação contra ataques externos.
+
+Monitoramento e Observabilidade, emprego de AWS CloudWatch e AWS X-Ray para monitorar a aplicação e infraestrutura, fornecendo dados operacionais e insights de desempenho.
+
+Arquitetura CQRS, separamos os processos de leitura e gravação no Banco de Dados NoSQL, para permitir melhor performance quando houver grandes volumes de dados e escalabilidade.
+
+Zonas de Disponibilidade, configuração de múltiplas zonas para garantir alta disponibilidade e failover automático.
+
+Integração de Sistemas Legados, conexão de sistemas mais antigos, como o Mainframe IBM z/OS, ao ecossistema moderno via Kafka Connector.
+
+
+# Existem padrões ocultos?
+
+
+Em uma arquitetura de e-commerce complexa, alguns padrões podem não ser imediatamente aparentes, mas são essenciais para o funcionamento eficiente do sistema. Aqui estão alguns padrões “ocultos” que podem existir:
+
+
+* Padrão de Filas de Mensagens: Utilizado para desacoplar componentes e garantir a entrega confiável de mensagens entre microserviços, especialmente em sistemas distribuídos;
+*  Circuit Breaker: Um mecanismo de resiliência que previne falhas em cascata, interrompendo temporariamente o serviço quando detecta problemas, permitindo que o sistema se recupere.
+* Padrão de Repositório: Centraliza o acesso aos dados de domínio, permitindo que os microserviços interajam com o banco de dados de maneira consistente e abstraída;
+* Padrão de Proxy de API: Atua como intermediário para chamadas de API, oferecendo uma camada adicional de abstração e segurança, além de possibilitar a transformação de dados;
+* Padrão de Back-End para Front-End (BFF): Cria APIs específicas para diferentes tipos de clientes (web, mobile), otimizando a experiência do usuário para cada caso;
+* Padrão de Cache de Dados: Implementado para melhorar o desempenho, reduzindo a carga no banco de dados e acelerando o acesso a dados frequentemente solicitados.
+
+
+Esses padrões podem não ser explicitamente mencionados na descrição da arquitetura, mas são fundamentais para garantir a escalabilidade, resiliência e eficiência do sistema.
+
+
+# Qual é o Metamodelo?
+
+
+Especificação dos tipos de componentes, como microserviços, bancos de dados, e serviços de CDN, e suas responsabilidades.
+
+Descrição de como os componentes se comunicam, incluindo APIs, mensagens assíncronas e eventos.
+
+Definição dos esquemas de dados e como eles são acessados, atualizados e mantidos consistentes entre os serviços.
+
+Regras de segurança, políticas de segurança, autenticação e autorização.
+
+Padrões de design, inclui padrões como Saga, CDC e outros mencionados anteriormente, que orientam a construção e evolução dos sistemas.
+
+Estratégias de Implantação, descrição de como os componentes são implantados, escalados e gerenciados na nuvem.
+
+Resumindo, são as abstrações, conceitos, regras, vínculos, ações, blocos de funções agrupadas com cores e padronização dos nomes, nomenclatura.
+
+
+# Pode ser discernido no diagrama único?
+
+
+Sim, um metamodelo pode ser discernido em um diagrama único de arquitetura de e-commerce. O diagrama único serve como uma representação visual que encapsula os componentes, padrões e interações definidos pelo metamodelo. Ele ilustra como os elementos individuais se encaixam dentro da estrutura geral do sistema.
+
+No entanto, a complexidade de um metamodelo completo pode significar que nem todos os detalhes estarão visíveis em um único diagrama. Em muitos casos, um conjunto de diagramas é utilizado para capturar todas as nuances de um metamodelo, com cada diagrama focando em diferentes aspectos, como:
+
+
+* Diagrama de Componentes: Mostra os componentes do sistema e suas inter-relações;
+* Diagrama de Sequência: Ilustra o fluxo de interações entre os componentes ao longo do tempo;
+* Diagrama de Infraestrutura: Detalha a infraestrutura subjacente, incluindo redes, servidores e zonas de disponibilidade;
+* Diagrama de Segurança: Especifica as camadas de segurança e as políticas de acesso.
+
+
+Um diagrama único pode fornecer uma visão de alto nível, mas para entender completamente o metamodelo, pode ser necessário examinar vários diagramas que, juntos, fornecem uma visão completa da arquitetura de e-commerce.
+
+
+# O diagrama está completo?
+
+
+Não, porque somente uma parte dos componentes estão inclusos.
+Uma arquitetura de e-commerce é muito maior do que descrito, descrevemos somente os principais componentes, ilustrativamente.
+Estaria completa se todos os componentes do sistema estivessem descritos, apesar do Fluxos de Dados, Mecanismos de Segurança, Estratégias de Resiliência, Padrões de Design, Processos de Negócios, Integrações, Infraestrutura de Rede e Aspectos de Monitoramento e Observabilidade terem sido descritos.
+
+
+# Poderia ser simplificado e ainda assim ser eficaz?
+
+
+Sim, o diagrama pode ser simplificado e ainda ser eficaz. A chave para uma simplificação eficaz é manter os elementos que são essenciais para entender o sistema e seus fluxos principais, enquanto remove ou abstrai detalhes que não são críticos para a compreensão geral. Aqui estão algumas estratégias para simplificar um diagrama mantendo sua eficácia:
+
+Agrupar componentes relacionados em abstrações de alto nível pode reduzir a complexidade visual sem perder a essência funcional.
+
+Concentrar-se nos fluxos de dados e processos de negócios mais importantes, omitindo os secundários ou menos críticos.
+
+Representar componentes e ações com ícones padronizados pode tornar o diagrama mais legível e menos textual.
+
+Detalhes como configurações específicas de segurança ou regras de roteamento podem ser omitidos se não forem essenciais para a compreensão do sistema.
+
+Assegurar que as interações e integrações críticas estejam claramente visíveis e compreensíveis.
+
+Fornecer documentação adicional que possa ser consultada para detalhes mais profundos, permitindo que o diagrama permaneça simplificado.
+
+Ao aplicar essas estratégias, é possível criar um diagrama que seja mais acessível e fácil de entender, mantendo a eficácia na comunicação da arquitetura do sistema.
+
+
+
+# Houve alguma discussão importante que vocês tiveram como equipe?
+
+
+Durante a discussão sobre a completude do diagrama de arquitetura, o grupo expressou diferentes pontos de vista. Alguns membros consideraram o diagrama completo, argumentando que ele capturava todos os elementos essenciais do sistema. Outros acreditavam que faltavam detalhes críticos, como políticas de segurança mais explícitas. Após um debate produtivo, a equipe decidiu realizar uma votação para resolver a questão. O resultado da votação indicou que a maioria considerava o diagrama incompleto, mas a decisão não foi unânime, refletindo a diversidade de opiniões dentro do grupo. A equipe concordou em revisitar a discussão no futuro, levando em conta as perspectivas e preocupações de todos os membros.
+
+
+# Que decisões sua equipe teve dificuldade para tomar?
+
+
+A equipe enfrentou dificuldades para decidir se o diagrama de arquitetura estava completo. As opiniões divergiram sobre a necessidade de incluir detalhes de segurança mais explícitos. Após um debate, uma votação indicou que a maioria considerava o diagrama incompleto, mas não houve unanimidade. Ficou acordado que a discussão seria retomada no futuro, considerando todas as perspectivas e preocupações dos membros da equipe.
+
+
+# Que decisões foram tomadas sob incerteza?
+
+
+A equipe debateu se deveria detalhar todos os componentes do sistema de e-commerce no diagrama ou optar por uma versão resumida. Apesar das incertezas e da falta de unanimidade, decidiu-se por resumir os componentes, focando nos elementos essenciais para manter o diagrama claro e gerenciável. Essa decisão foi tomada mesmo com dúvidas sobre a completude do diagrama e a necessidade de incluir mais detalhes de segurança. A equipe concordou em revisitar essas questões no futuro.
+
+
+# Houve algum ponto de decisão sem retorno que o forçou a desistir de um determinado.
+
+
+Sim, a equipe enfrentou um ponto de decisão sem retorno ao escolher resumir os componentes do sistema de e-commerce no diagrama. Essa decisão foi tomada devido à preocupação de que descrever todos os componentes tornaria o trabalho muito extenso e poderia comprometer a conclusão do projeto dentro do prazo estabelecido. Ao optar pela simplificação, a equipe teve que abandonar a abordagem de documentação detalhada, o que significou desistir de incluir todos os detalhes possíveis no diagrama. Essa escolha representou um compromisso entre a completude e a praticidade, refletindo a necessidade de gerenciar o escopo do trabalho de forma eficiente.
+
+
+# Desenhe 3 Arquiteturas em cada uma das camadas do C4; (Subir somente a Imagem jpg/jpeg); Contexto; Contêiner; Componente e Code (Opcional)
+
+
+# CONTEXTO
+
+
+![](ArquiteturaC4Model/C4-Modeldrawio.png)
 
 ```python
 
