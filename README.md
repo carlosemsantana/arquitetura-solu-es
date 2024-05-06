@@ -237,10 +237,8 @@ Esses riscos destacam a importância de uma gestão de riscos proativa e de uma 
 
 # Desenhe uma arquitetura
 
-```python
 
-```
+![](ArquiteturaFreeStylle/Arquitetura_Case_E_COmmerce.png)
 
-```python
 
-```
+
