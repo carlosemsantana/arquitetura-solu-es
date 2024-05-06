@@ -481,10 +481,70 @@ Sim, a equipe enfrentou um ponto de decisão sem retorno ao escolher resumir os 
 # Desenhe 3 Arquiteturas em cada uma das camadas do C4; (Subir somente a Imagem jpg/jpeg); Contexto; Contêiner; Componente e Code (Opcional)
 
 
-# CONTEXTO
+# Arquitetura C4 Model - CONTEXTO
 
 
-![](ArquiteturaC4Model/C4-Modeldrawio.png)
+![](ArquiteturaC4Model/ArquiteturaC4ModelContexto/C4-Modeldrawio.png)
+
+
+Figura 2: Fonte: O autor, 03/05/2024
+
+
+# Arquitetura C4 Model - CONTAINER
+
+
+![](ArquiteturaC4Model/ArquiteturaC4ModelContainer/C4-Model-Conteinerdrawio.png)
+
+
+Figura 3: Fonte: O autor, 03/05/2024
+
+
+# Arquitetura C4 Model - COMPONENTES
+
+
+# PEDIDOS
+
+
+![](ArquiteturaC4Model/ArquiteturaC4ModelComponentes/C4-Model-ComponentesPEDIDOSdrawio.png)
+
+
+Figura 4: Fonte: O autor, 03/05/2024
+
+
+# ESTOQUE
+
+
+![](ArquiteturaC4Model/ArquiteturaC4ModelComponentes/C4-Model-ComponentesESTOQUEdrawio.png)
+
+
+Figura 5: Fonte: O autor, 03/05/2024
+
+
+# PAGAMENTO
+
+
+![](ArquiteturaC4Model/ArquiteturaC4ModelComponentes/C4-Model-ComponentesPAGAMENTOdrawio.png)
+
+
+Figura 6: Fonte: O autor, 03/05/2024
+
+
+# ANTI-FRAUDE
+
+
+![](ArquiteturaC4Model/ArquiteturaC4ModelComponentes/C4-Model-ComponentesANTI-FRAUDEdrawio.png)
+
+
+Figura 7: Fonte: O autor, 03/05/2024
+
+
+# LOGÍSTICA
+
+
+![](ArquiteturaC4Model/ArquiteturaC4ModelComponentes/C4-Model-ComponentesLOGiSTICAdrawio.png)
+
+
+Figura 8: Fonte: O autor, 03/05/2024
 
 ```python
 
